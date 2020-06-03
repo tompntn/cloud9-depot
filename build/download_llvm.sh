@@ -20,7 +20,7 @@ COMPILER_RT_DIR="${LLVM_DIR}/projects/compiler-rt"
 STAMP_FILE="${LLVM_BUILD_DIR}/cr_build_revision"
 
 # ${A:-a} returns $A if it's set, a else.
-LLVM_REPO_URL=${LLVM_URL:-https://llvm.org/svn/llvm-project}
+LLVM_REPO_URL=${LLVM_URL:-http://llvm.org/svn/llvm-project}
 
 # Die if any command dies.
 set -e

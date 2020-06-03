@@ -28,14 +28,6 @@
 
 # This file is used by gclient to fetch the projects that Cloud9 depends on.
 
-vars = {
-  "libcxx_trunk":
-    "http://llvm.org/svn/llvm-project/libcxx/trunk",
-  "libcxx_release31":
-    "http://llvm.org/svn/llvm-project/libcxx/tags/RELEASE_31/final",
-}
-
-
 deps = {
   "src/cloud9":
     "git+https://github.com/dslab-epfl/cloud9.git",
@@ -45,13 +37,9 @@ deps = {
   "src/third_party/stp":
     "git+https://github.com/stp/stp.git@9ab2a59",
   "src/third_party/gyp":
-    "http://gyp.googlecode.com/svn/trunk@1417",
+    "git+https://chromium.googlesource.com/external/gyp.git",
   "src/third_party/boolector":
     "git+https://github.com/dslab-epfl/cloud9-boolector.git",
-
-  # Testing targets
-  "src/testing_targets/libcxx":
-    Var("libcxx_trunk"),
 }
 
 
@@ -68,6 +56,10 @@ hooks = [
       "src/build/download_llvm.sh",
       #"--debug-build",
     ],
+  },
+  {
+    "pattern": ".",
+    "action": ["src/build/download_libcxx.sh"],
   },
   {
     "pattern": ".",
